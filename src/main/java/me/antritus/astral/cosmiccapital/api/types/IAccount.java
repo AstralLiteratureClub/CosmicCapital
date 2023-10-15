@@ -48,6 +48,11 @@ public interface IAccount {
 	 */
 	long created();
 
+	/**
+	 * Returns the balance of player's account.
+	 * @return balalance
+	 */
+	double balance();
 
 
 	@CreatesEntry()
