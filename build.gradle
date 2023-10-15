@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group = 'me.antritus'
+version = '1.2'
+description = 'CosmicCapitalAPI'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.jetbrains:annotations:24.0.0'
+    implementation 'net.kyori:adventure-api:4.14.0'
+    //noinspection VulnerableLibrariesLocal
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
