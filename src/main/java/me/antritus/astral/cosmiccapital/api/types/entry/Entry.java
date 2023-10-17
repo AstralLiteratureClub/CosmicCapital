@@ -1,11 +1,11 @@
 package me.antritus.astral.cosmiccapital.api.types.entry;
 
+import com.google.gson.JsonObject;
 import me.antritus.astral.cosmiccapital.api.IEconomyProvider;
-import me.antritus.astral.cosmiccapital.api.types.IAccount;
+import me.antritus.astral.cosmiccapital.api.types.account.IAccount;
 import me.antritus.astral.cosmiccapital.api.types.operator.Operator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.json.simple.JSONObject;
 
 /**
  * @author Antritus
@@ -70,23 +70,20 @@ public interface Entry {
 	 * Returns extra info about this entry.
 	 * @return info
 	 */
-	JSONObject info();
+	@Nullable
+	JsonObject info();
+
 
 	/**
-	 * Balance amount before change.
-	 * @return amount
+	 * Returns the currencies and changes of this entry.
+	 * @return data
 	 */
-	double balanceBefore();
+	EntryCurrencyData[] entryCurrencyData();
+
 
 	/**
-	 * Balance after change.
-	 * @return amount
+	 * Is multi-currency entry.
+	 * @return is multi-currency entry
 	 */
-	double balanceAfter();
-
-	/**
-	 * How much balance changed in the action?
-	 * @return change amount
-	 */
-	double balanceChange();
+	boolean multiCurrency();
 }

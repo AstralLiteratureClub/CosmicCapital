@@ -1,14 +1,15 @@
 package me.antritus.astral.cosmiccapital.api.providers;
 
+
 import me.antritus.astral.cosmiccapital.api.CosmicCapitalAPI;
 import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("unused")
-public final class EconomyProvider {
+public class CosmicCapitalProvider{
 	/**
 	 * Locks the class so it can't be instanced.
 	 */
-	private EconomyProvider(){}
+	protected CosmicCapitalProvider(){}
 
 	/**
 	 * The economy field to reflect once provider is ready.

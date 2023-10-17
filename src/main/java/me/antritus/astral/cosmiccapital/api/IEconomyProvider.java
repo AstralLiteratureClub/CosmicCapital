@@ -1,27 +1,43 @@
 package me.antritus.astral.cosmiccapital.api;
 
+import com.google.gson.JsonObject;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.json.simple.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @SuppressWarnings("unused")
 public interface IEconomyProvider {
+	/**
+	 * Provider name
+	 * @return name
+	 */
 	@NotNull
 	String getName();
+
+	/**
+	 * Provider version
+	 * @return version
+	 */
 	@NotNull
 	String getVersion();
+
+	/**
+	 * Provider mod/plugin
+	 * @return mod/plugin
+	 */
 	@Nullable
 	Object getPlugin();
+
+	/**
+	 * Converts name and version to json
+	 * @return json of name and version
+	 */
 	@Contract(" -> new")
-	default @NotNull JSONObject toJson(){
-		Map<String, Object> json = new HashMap<>();
-		json.put("name", getName());
-		json.put("version", getVersion());
-		return new JSONObject(json);
+	default @NotNull JsonObject toJson(){
+		JsonObject jsonObject = new JsonObject();
+		jsonObject.addProperty("name", getName());
+		jsonObject.addProperty("version", getVersion());
+		return jsonObject;
 	}
 
 }

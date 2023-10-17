@@ -1,6 +1,8 @@
 package me.antritus.astral.cosmiccapital.api.types;
 
 import me.antritus.astral.cosmiccapital.api.IEconomyProvider;
+import me.antritus.astral.cosmiccapital.api.types.account.IAccount;
+import me.antritus.astral.cosmiccapital.api.types.currency.CurrencyBundle;
 import me.antritus.astral.cosmiccapital.api.types.entry.Entry;
 import me.antritus.astral.cosmiccapital.api.types.entry.EntryType;
 import me.antritus.astral.cosmiccapital.api.types.operator.Operator;
@@ -61,8 +63,7 @@ public interface IHistory {
 	 * @param operator operator
 	 * @param created when is entry created
 	 * @param jsonInfo json info
-	 * @param oldBalance old balance
-	 * @param newBalance new balance
+	 * @param currencyBundles currencies
 	 */
-	void newEntry(String name, Class<? extends IEconomyProvider> providerClass, EntryType entryType, IAccount to, Operator operator, long created, String jsonInfo, double oldBalance, double newBalance);
+	void newEntry(String name, Class<? extends IEconomyProvider> providerClass, EntryType entryType, IAccount to, Operator operator, long created, String jsonInfo, CurrencyBundle... currencyBundles);
 }

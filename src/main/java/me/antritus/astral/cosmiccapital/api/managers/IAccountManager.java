@@ -1,6 +1,6 @@
 package me.antritus.astral.cosmiccapital.api.managers;
 
-import me.antritus.astral.cosmiccapital.api.types.IAccount;
+import me.antritus.astral.cosmiccapital.api.types.account.ISingleCurrencyAccount;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -9,12 +9,12 @@ import java.util.UUID;
 @SuppressWarnings("unused")
 public interface IAccountManager {
 	@Nullable
-	IAccount get(String name);
+	ISingleCurrencyAccount get(String name);
 	@Nullable
-	IAccount get(UUID uniqueId);
+	ISingleCurrencyAccount get(UUID uniqueId);
 	@NotNull
-	IAccount getKnownNonNull(String name);
+	ISingleCurrencyAccount getKnownNonNull(String name);
 	@NotNull
-	IAccount getKnownNonNull(UUID uniqueId);
+	ISingleCurrencyAccount getKnownNonNull(UUID uniqueId);
 
 }

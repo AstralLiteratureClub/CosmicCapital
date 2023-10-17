@@ -1,14 +1,21 @@
 package me.antritus.astral.cosmiccapital.api;
 
-import me.antritus.astral.cosmiccapital.api.managers.IAccountManager;
-import me.antritus.astral.cosmiccapital.api.managers.ICurrencyManager;
+import me.antritus.astral.cosmiccapital.api.managers.*;
 import me.antritus.astral.cosmiccapital.api.types.currency.ICurrency;
 import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("unused")
-public interface CosmicCapitalAPI extends IEconomyProvider {
+public interface CosmicCapitalAPI {
+	/**
+	 * Returns the operator manager.
+	 * @see IOperatorManager
+	 * @return operator manager
+	 */
+	IOperatorManager operatorManager();
+
 	/**
 	 * Returns the player account manager
+	 * @see IAccountManager
 	 * @return account manager
 	 */
 	@NotNull
@@ -16,6 +23,7 @@ public interface CosmicCapitalAPI extends IEconomyProvider {
 
 	/**
 	 * Returns the banknote manager
+	 * @see IAccountManager
 	 * @return account manager
 	 */
 	@NotNull
@@ -23,13 +31,19 @@ public interface CosmicCapitalAPI extends IEconomyProvider {
 
 	/**
 	 * Returns the manager for banks.
+	 * @see IAccountManager
 	 * @return account manager
 	 */
 	@NotNull
-	IAccountManager bankManager();
+	IMultiAccountManager multiBankManager();
+
+	@NotNull
+	IAccountManager singleBankManager();
 
 	/**
 	 * Returns the currency manager
+	 * @see ICurrencyManager
+	 * @see ICurrencyManager
 	 * @return currency manager
 	 */
 	@NotNull
@@ -38,10 +52,19 @@ public interface CosmicCapitalAPI extends IEconomyProvider {
 
 	/**
 	 * Returns the main currency for the server.
+	 * @see ICurrency
+	 * @see ICurrencyManager
 	 * @return this currency can be changed in the plugin configurations.
 	 */
 	@NotNull
 	default ICurrency mainCurrency() {
 		return currencyManager().getMainCurrency();
 	}
+
+
+	/**
+	 * Returns global the world manager
+	 * @return world manager
+	 */
+	IWorldManager worldManager();
 }
