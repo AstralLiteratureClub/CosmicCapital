@@ -13,7 +13,7 @@ public interface IAccountRegistryManager {
 	 * @param manager manager
 	 * @param accountClazz account class
 	 */
-	void register(@NotNull IAccountManager manager, @NotNull Class<? extends IAccount> accountClazz);
+	void register(@NotNull IAccountManager manager, @NotNull Class<? extends IAccount> accountClazz) throws IllegalStateException;
 
 
 	/**
