@@ -1,9 +1,12 @@
 package me.antritus.astral.cosmiccapital.api.types.account;
 
+import com.google.gson.JsonObject;
 import me.antritus.astral.cosmiccapital.api.IEconomyProvider;
 import me.antritus.astral.cosmiccapital.api.types.IHistory;
+import me.antritus.astral.cosmiccapital.api.types.currency.CurrencyBundle;
 import me.antritus.astral.cosmiccapital.api.types.entry.CreatesEntry;
 import me.antritus.astral.cosmiccapital.api.types.entry.EntryType;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
@@ -49,7 +52,13 @@ public interface IAccount {
 	 */
 	Object currency();
 
-
+	/**
+	 * Allows receiving transfers from other accounts.
+	 * @param from account receiving from
+	 * @param currencyBundle currencies and amounts received
+	 */
+	@ApiStatus.Internal
+	void receive(IEconomyProvider economyProvider, IAccount from, JsonObject data, CurrencyBundle... currencyBundle);
 
 	enum CustomAction {
 		/**

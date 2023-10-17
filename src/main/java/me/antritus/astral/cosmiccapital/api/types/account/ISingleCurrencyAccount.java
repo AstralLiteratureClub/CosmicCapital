@@ -33,7 +33,7 @@ public interface ISingleCurrencyAccount {
 	 * @param amount  amount
 	 */
 	@CreatesEntry
-	void transfer(@NotNull IEconomyProvider economy, @NotNull ISingleCurrencyAccount to, double amount, @Nullable JsonObject data);
+	void transfer(@NotNull IEconomyProvider economy, @NotNull IAccount to, double amount, @Nullable JsonObject data);
 
 
 	/**
@@ -85,7 +85,7 @@ public interface ISingleCurrencyAccount {
 	 * @param data    extra data about action
 	 */
 	@CreatesEntry
-	void custom(@NotNull IEconomyProvider economy, @NotNull ISingleCurrencyAccount account, @NotNull IAccount.CustomAction action, double amount, @Nullable JsonObject data);
+	void custom(@NotNull IEconomyProvider economy, @NotNull IAccount account, @NotNull IAccount.CustomAction action, double amount, @Nullable JsonObject data);
 
 	/**
 	 * Custom method to allow plugins to do their own actions.

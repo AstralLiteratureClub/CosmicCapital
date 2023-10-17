@@ -15,30 +15,30 @@ public interface CosmicCapitalAPI {
 
 	/**
 	 * Returns the player account manager
-	 * @see IAccountManager
+	 * @see ISingleAccountManager
 	 * @return account manager
 	 */
 	@NotNull
-	IAccountManager playerManager();
+	ISingleAccountManager playerManager();
 
 	/**
 	 * Returns the banknote manager
-	 * @see IAccountManager
+	 * @see ISingleAccountManager
 	 * @return account manager
 	 */
 	@NotNull
-	IAccountManager banknoteManager();
+	ISingleAccountManager banknoteManager();
 
 	/**
 	 * Returns the manager for banks.
-	 * @see IAccountManager
+	 * @see ISingleAccountManager
 	 * @return account manager
 	 */
 	@NotNull
 	IMultiAccountManager multiBankManager();
 
 	@NotNull
-	IAccountManager singleBankManager();
+	ISingleAccountManager singleBankManager();
 
 	/**
 	 * Returns the currency manager
@@ -67,4 +67,11 @@ public interface CosmicCapitalAPI {
 	 * @return world manager
 	 */
 	IWorldManager worldManager();
+
+
+	/**
+	 * Returns the account registry manager
+	 * @return account registry manager
+	 */
+	IAccountRegistryManager accountRegistryManager();
 }

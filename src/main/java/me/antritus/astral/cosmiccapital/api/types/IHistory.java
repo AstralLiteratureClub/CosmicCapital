@@ -1,9 +1,10 @@
 package me.antritus.astral.cosmiccapital.api.types;
 
+import com.google.gson.JsonObject;
 import me.antritus.astral.cosmiccapital.api.IEconomyProvider;
 import me.antritus.astral.cosmiccapital.api.types.account.IAccount;
-import me.antritus.astral.cosmiccapital.api.types.currency.CurrencyBundle;
 import me.antritus.astral.cosmiccapital.api.types.entry.Entry;
+import me.antritus.astral.cosmiccapital.api.types.entry.EntryCurrencyData;
 import me.antritus.astral.cosmiccapital.api.types.entry.EntryType;
 import me.antritus.astral.cosmiccapital.api.types.operator.Operator;
 import org.jetbrains.annotations.NotNull;
@@ -56,14 +57,11 @@ public interface IHistory {
 
 	/**
 	 * Creates new entry to history.
-	 * @param name name
-	 * @param providerClass provider's class
-	 * @param entryType type
+	 * @param economyProvider economy provider
 	 * @param to account
 	 * @param operator operator
-	 * @param created when is entry created
-	 * @param jsonInfo json info
-	 * @param currencyBundles currencies
+	 * @param jsonData json info
+	 * @param currencyData currencies & data
 	 */
-	void newEntry(String name, Class<? extends IEconomyProvider> providerClass, EntryType entryType, IAccount to, Operator operator, long created, String jsonInfo, CurrencyBundle... currencyBundles);
+	void newHistoryEntry(IEconomyProvider economyProvider, EntryType entryType, IAccount to, Operator operator, JsonObject jsonData, EntryCurrencyData... currencyData);
 }

@@ -25,6 +25,16 @@ public class CurrencyBundle {
 		this.amount = amount;
 		this.currencyName = currency.name();
 	}
+	/**
+	 * Creates a new currency bundle.
+	 * @param currencyName currency name
+	 * @param amount amount
+	 */
+	public CurrencyBundle(String currencyName, double amount) {
+		this.currencyName = currencyName;
+		this.amount = amount;
+		this.currency = null;
+	}
 
 	private CurrencyBundle(){
 		this.amount = 0;

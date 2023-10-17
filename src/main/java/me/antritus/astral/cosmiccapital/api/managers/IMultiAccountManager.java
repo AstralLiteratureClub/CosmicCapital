@@ -6,8 +6,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
 
+/**
+ * Represents multi-currency account manager for account managers
+ */
 @SuppressWarnings("unused")
-public interface IMultiAccountManager {
+public interface IMultiAccountManager extends IAccountManager {
 	@Nullable
 	IMultiCurrencyAccount get(String name);
 	@Nullable

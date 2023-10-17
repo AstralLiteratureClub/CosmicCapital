@@ -4,6 +4,9 @@ import me.antritus.astral.cosmiccapital.api.types.currency.ICurrency;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * Allows registering and getting currencies by name
+ */
 @SuppressWarnings("unused")
 public interface ICurrencyManager {
 	/**

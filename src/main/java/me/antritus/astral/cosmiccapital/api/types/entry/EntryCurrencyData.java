@@ -5,7 +5,9 @@ import me.antritus.astral.cosmiccapital.api.CosmicCapitalAPI;
 import me.antritus.astral.cosmiccapital.api.managers.ICurrencyManager;
 import me.antritus.astral.cosmiccapital.api.providers.CosmicCapitalProvider;
 import me.antritus.astral.cosmiccapital.api.types.currency.ICurrency;
+import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("unused")
 public class EntryCurrencyData {
 	@Expose(deserialize = false, serialize = false)
 	private ICurrency currency;
@@ -18,12 +20,30 @@ public class EntryCurrencyData {
 	@Expose
 	private final double balanceChange;
 
-	protected EntryCurrencyData(double balanceBefore, double balanceAfter, double balanceChange) {
+	protected EntryCurrencyData(@NotNull ICurrency currency, double balanceBefore, double balanceAfter, double balanceChange) {
+		this.currency = currency;
+		this.currencyName = currency.name();
 		this.balanceBefore = balanceBefore;
 		this.balanceAfter = balanceAfter;
 		this.balanceChange = balanceChange;
 	}
-	public EntryCurrencyData(double balanceBefore, double balanceAfter){
+
+	protected EntryCurrencyData(@NotNull String currency, double balanceBefore, double balanceAfter, double balanceChange) {
+		this.currencyName = currency;
+		this.balanceBefore = balanceBefore;
+		this.balanceAfter = balanceAfter;
+		this.balanceChange = balanceChange;
+	}
+	public EntryCurrencyData(@NotNull ICurrency currency, double balanceBefore, double balanceAfter){
+		this.currency = currency;
+		this.currencyName = currency.name();
+		this.balanceBefore = balanceBefore;
+		this.balanceAfter = balanceAfter;
+		this.balanceChange = balanceBefore-balanceAfter;
+	}
+
+	public EntryCurrencyData(@NotNull String currency, double balanceBefore, double balanceAfter){
+		this.currencyName = currency;
 		this.balanceBefore = balanceBefore;
 		this.balanceAfter = balanceAfter;
 		this.balanceChange = balanceBefore-balanceAfter;

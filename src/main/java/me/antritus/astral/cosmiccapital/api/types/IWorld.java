@@ -1,6 +1,6 @@
 package me.antritus.astral.cosmiccapital.api.types;
 
-import me.antritus.astral.cosmiccapital.api.managers.IAccountManager;
+import me.antritus.astral.cosmiccapital.api.managers.ISingleAccountManager;
 import me.antritus.astral.cosmiccapital.api.managers.IMultiAccountManager;
 
 import java.util.Currency;
@@ -30,14 +30,14 @@ public interface IWorld {
 	 * @param currency currency
 	 * @return manager for given currency.
 	 */
-	IAccountManager accountManager(Currency currency);
+	ISingleAccountManager accountManager(Currency currency);
 
 	/**
 	 * Returns single currency account manager based on given currency
 	 * @param currencyName currency name
 	 * @return manager for given currency.
 	 */
-	IAccountManager accountManager(String currencyName);
+	ISingleAccountManager accountManager(String currencyName);
 
 	/**
 	 * Returns multi currency account manager based on given currency
