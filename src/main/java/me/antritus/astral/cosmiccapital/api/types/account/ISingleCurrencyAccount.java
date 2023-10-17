@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("unused")
-public interface ISingleCurrencyAccount {
+public interface ISingleCurrencyAccount extends IAccount{
 	/**
 	 * Gets the currency for this account.
 	 * @return currency, else null

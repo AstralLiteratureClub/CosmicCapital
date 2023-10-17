@@ -12,6 +12,7 @@ import java.util.UUID;
 @SuppressWarnings("unused")
 public interface ISingleAccountManager extends IAccountManager {
 	@Nullable
+	@Override
 	ISingleCurrencyAccount get(String name);
 	@Nullable
 	ISingleCurrencyAccount get(UUID uniqueId);
