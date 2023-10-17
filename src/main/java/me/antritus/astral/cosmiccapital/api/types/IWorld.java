@@ -1,9 +1,8 @@
 package me.antritus.astral.cosmiccapital.api.types;
 
-import me.antritus.astral.cosmiccapital.api.managers.ISingleAccountManager;
-import me.antritus.astral.cosmiccapital.api.managers.IMultiAccountManager;
+import me.antritus.astral.cosmiccapital.api.managers.IAccountManager;
+import me.antritus.astral.cosmiccapital.api.types.account.IAccount;
 
-import java.util.Currency;
 import java.util.UUID;
 
 public interface IWorld {
@@ -26,22 +25,15 @@ public interface IWorld {
 	UUID uniqueId();
 
 	/**
-	 * Returns single currency account manager based on given currency
-	 * @param currency currency
-	 * @return manager for given currency.
+	 * Registers a new account manager for given account type
+	 * @param account account
+	 * @param accountManager manager
 	 */
-	ISingleAccountManager accountManager(Currency currency);
-
-	/**
-	 * Returns single currency account manager based on given currency
-	 * @param currencyName currency name
-	 * @return manager for given currency.
-	 */
-	ISingleAccountManager accountManager(String currencyName);
+	void register(IAccount account, IAccount accountManager);
 
 	/**
 	 * Returns multi currency account manager based on given currency
 	 * @return manager for given currency
 	 */
-	IMultiAccountManager multiAccountManager();
+	IAccountManager multiAccountManager(IAccount account);
 }

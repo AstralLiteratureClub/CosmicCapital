@@ -15,30 +15,30 @@ public interface CosmicCapitalAPI {
 
 	/**
 	 * Returns the player account manager
-	 * @see ISingleAccountManager
+	 * @see me.antritus.astral.cosmiccapital.api.types.account.IAccount
 	 * @return account manager
 	 */
 	@NotNull
-	ISingleAccountManager playerManager();
+	IAccountManager playerManager();
 
 	/**
 	 * Returns the banknote manager
-	 * @see ISingleAccountManager
+	 * @see me.antritus.astral.cosmiccapital.api.types.account.IAccount
 	 * @return account manager
 	 */
 	@NotNull
-	ISingleAccountManager banknoteManager();
+	IAccountManager banknoteManager();
 
 	/**
 	 * Returns the manager for banks.
-	 * @see ISingleAccountManager
+	 * @see me.antritus.astral.cosmiccapital.api.types.account.IAccount
 	 * @return account manager
 	 */
 	@NotNull
-	IMultiAccountManager multiBankManager();
+	IAccountManager multiBankManager();
 
 	@NotNull
-	ISingleAccountManager singleBankManager();
+	IAccountManager singleBankManager();
 
 	/**
 	 * Returns the currency manager
