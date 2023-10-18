@@ -1,7 +1,7 @@
 # CosmicCapitalAPI
 ## Usage
 Getting CosmicCapitalAPI (any platform)
-```java
+```
 CosmicCapitalAPI cosmicCapitalAPI = CosmicCapitalProvider.get();
 ```
 Registering your own EconomyProvider
