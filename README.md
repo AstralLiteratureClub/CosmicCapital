@@ -1,9 +1,9 @@
 # CosmicCapitalAPI
 ## Usage
 Getting CosmicCapitalAPI (any platform)
-<code>java
-CosmicCapitalAPI cosmicCapital = CosmicCapitalProvider.get();
-</code>
+```java
+CosmicCapitalAPI cosmicCapitalAPI = CosmicCapitalProvider.get();
+```
 Registering your own EconomyProvider
 ```java
 import me.antritus.astral.cosmiccapital.api.IEconomyProvider;
@@ -12,9 +12,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class MyPlugin extends JavaPlugin implements IEconomyProvider {
+	private CosmicCapitalAPI cosmicCapitalAPI;
 
 	@Override
 	public void onEnable(){
+
+		cosmicCapitalAPI = CosmicCapitalProvider.getAPI();
 		getLogger().info("MyPlugin has enabled!");
 	}
 
