@@ -76,7 +76,7 @@ double balance(IAccount account, String currency){
 }
 ```
 Full example
-```
+```java
 import io.papermc.paper.event.player.AsyncChatDecorateEvent;
 import me.antritus.astral.cosmiccapital.api.CosmicCapitalAPI;
 import me.antritus.astral.cosmiccapital.api.IEconomyProvider;
