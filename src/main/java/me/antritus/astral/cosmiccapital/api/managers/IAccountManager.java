@@ -18,4 +18,6 @@ public interface IAccountManager {
 	IAccount getKnownNonNull(String name);
 	@NotNull
 	IAccount getKnownNonNull(UUID uniqueId);
+
+	void createIfNotExists(IAccount account);
 }

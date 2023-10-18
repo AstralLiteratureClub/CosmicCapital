@@ -35,10 +35,7 @@ public interface CosmicCapitalAPI {
 	 * @return account manager
 	 */
 	@NotNull
-	IAccountManager multiBankManager();
-
-	@NotNull
-	IAccountManager singleBankManager();
+	IAccountManager bankManager();
 
 	/**
 	 * Returns the currency manager

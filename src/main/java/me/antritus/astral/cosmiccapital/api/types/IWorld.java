@@ -25,15 +25,17 @@ public interface IWorld {
 	UUID uniqueId();
 
 	/**
-	 * Registers a new account manager for given account type
+	 * Registers a new account manager for a given account type
 	 * @param account account
 	 * @param accountManager manager
 	 */
-	void register(IAccount account, IAccount accountManager);
+	void register(IAccount account, IAccountManager accountManager);
 
 	/**
 	 * Returns multi currency account manager based on given currency
 	 * @return manager for given currency
 	 */
 	IAccountManager multiAccountManager(IAccount account);
+
+	IAccountManager worldPlayerManager();
 }
