@@ -5,12 +5,7 @@ Getting CosmicCapitalAPI (any platform)
 CosmicCapitalAPI cosmicCapital = CosmicCapitalProvider.get();
 </code>
 Registering your own EconomyProvider
-<code>java
-import me.antritus.astral.cosmiccapital.api.IEconomyProvider;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
+```java
 public class MyPlugin extends JavaPlugin implements IEconomyProvider {
 
 	@Override
@@ -40,5 +35,6 @@ public class MyPlugin extends JavaPlugin implements IEconomyProvider {
 		return this;
 	}
 }
+```
 
 ## Contributes
