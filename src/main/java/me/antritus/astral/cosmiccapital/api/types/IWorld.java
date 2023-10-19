@@ -1,7 +1,9 @@
 package me.antritus.astral.cosmiccapital.api.types;
 
 import me.antritus.astral.cosmiccapital.api.managers.IAccountManager;
+import me.antritus.astral.cosmiccapital.api.managers.IBankManager;
 import me.antritus.astral.cosmiccapital.api.types.account.IAccount;
+import me.antritus.astral.cosmiccapital.api.types.bank.IBank;
 
 import java.util.UUID;
 
@@ -30,6 +32,12 @@ public interface IWorld {
 	 * @param accountManager manager
 	 */
 	void register(Class<? extends IAccount> account, IAccountManager<? extends IAccount> accountManager);
+	/**
+	 * Registers a new bank manager for a given account type
+	 * @param account account
+	 * @param bankManager manager
+	 */
+	void register(Class<? extends IAccount> account, IBankManager<? extends IBank> bankManager);
 
 	/**
 	 * Returns account manager based on given account class
@@ -39,4 +47,10 @@ public interface IWorld {
 	IAccountManager<? extends IAccount> accountManager(Class<? extends IAccount> accountClass);
 
 	IAccountManager<? extends IAccount> worldPlayerManager();
+
+	/**
+	 * Returns the main bank manager for the world.
+	 * @return bank manager
+	 */
+	IBankManager<? extends IBank> worldBankManager();
 }
