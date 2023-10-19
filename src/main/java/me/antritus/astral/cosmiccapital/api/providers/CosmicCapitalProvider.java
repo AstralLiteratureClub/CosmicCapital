@@ -14,7 +14,7 @@ public class CosmicCapitalProvider{
 	/**
 	 * The economy field to reflect once provider is ready.
 	 */
-	private static CosmicCapitalAPI api;
+	private static CosmicCapitalAPI<?> api;
 
 	/**
 	 * Returns the cosmic capital api.
@@ -24,7 +24,7 @@ public class CosmicCapitalProvider{
 	 * @return api
 	 */
 	@Nullable
-	public static CosmicCapitalAPI getAPI(){
+	public static CosmicCapitalAPI<?> getAPI(){
 		return api;
 	}
 }

@@ -48,7 +48,7 @@ public interface IAccount {
 	 * @param economy economy provider
 	 */
 	@CreatesEntry()
-	void resetHistory(@NotNull IEconomyProvider economy);
+	void resetHistory(@NotNull IEconomyProvider<?> economy);
 
 	/**
 	 * Gets the currency for this account.
@@ -84,7 +84,7 @@ public interface IAccount {
 	 * @param data extra data about action
 	 */
 	@CreatesEntry
-	void transfer(@NotNull IEconomyProvider economy, @NotNull IAccount to, @Nullable JsonObject data, CurrencyBundle... currencyBundle);
+	void transfer(@NotNull IEconomyProvider<?> economy, @NotNull IAccount to, @Nullable JsonObject data, CurrencyBundle... currencyBundle);
 
 	/**
 	 * Allows receiving transfers from other accounts.
@@ -92,7 +92,7 @@ public interface IAccount {
 	 * @param currencyBundle currencies and amounts received
 	 */
 	@ApiStatus.Internal
-	void receive(IEconomyProvider economyProvider, IAccount from, JsonObject data, CurrencyBundle... currencyBundle);
+	void receive(IEconomyProvider<?> economyProvider, IAccount from, JsonObject data, CurrencyBundle... currencyBundle);
 
 
 	/**
@@ -104,7 +104,7 @@ public interface IAccount {
 	 * @param data extra data about action
 	 */
 	@CreatesEntry
-	void operatorSet(@NotNull IEconomyProvider economy, @NotNull Operator operator, @Nullable JsonObject data, CurrencyBundle... currencyBundle);
+	void operatorSet(@NotNull IEconomyProvider<?> economy, @NotNull Operator operator, @Nullable JsonObject data, CurrencyBundle... currencyBundle);
 
 	/**
 	 * Resets balance of the given currency from the account.
@@ -115,7 +115,7 @@ public interface IAccount {
 	 * @param data extra data about action
 	 */
 	@CreatesEntry
-	void operatorReset(@NotNull IEconomyProvider economy, ICurrency currency, @NotNull Operator operator, @Nullable JsonObject data);
+	void operatorReset(@NotNull IEconomyProvider<?> economy, ICurrency currency, @NotNull Operator operator, @Nullable JsonObject data);
 
 	/**
 	 * Resets all balances and currencies from the account.
@@ -125,7 +125,7 @@ public interface IAccount {
 	 * @param data extra data about action
 	 */
 	@CreatesEntry
-	void operatorReset(@NotNull IEconomyProvider economy, @NotNull Operator operator, @Nullable JsonObject data);
+	void operatorReset(@NotNull IEconomyProvider<?> economy, @NotNull Operator operator, @Nullable JsonObject data);
 
 	/**
 	 * Adds to the balance of the account.
@@ -136,7 +136,7 @@ public interface IAccount {
 	 * @param data extra data about action
 	 */
 	@CreatesEntry
-	void operatorAdd(@NotNull IEconomyProvider economy, @NotNull Operator operator, @Nullable JsonObject data, CurrencyBundle... currencyBundles);
+	void operatorAdd(@NotNull IEconomyProvider<?> economy, @NotNull Operator operator, @Nullable JsonObject data, CurrencyBundle... currencyBundles);
 
 	/**
 	 * Custom method to allow plugins to do their own actions.
@@ -148,7 +148,7 @@ public interface IAccount {
 	 * @param data    extra data about action
 	 */
 	@CreatesEntry
-	void custom(@NotNull IEconomyProvider economy, @NotNull IAccount account, @NotNull IAccount.CustomAction action, @Nullable JsonObject data, CurrencyBundle... currencyBundles);
+	void custom(@NotNull IEconomyProvider<?> economy, @NotNull IAccount account, @NotNull IAccount.CustomAction action, @Nullable JsonObject data, CurrencyBundle... currencyBundles);
 
 	/**
 	 * Removes from the balance of the account.
@@ -159,7 +159,7 @@ public interface IAccount {
 	 * @param data extra data about action
 	 */
 	@CreatesEntry
-	void operatorRemove(@NotNull IEconomyProvider economy, @NotNull Operator operator, @Nullable JsonObject data, CurrencyBundle... currencyBundle);
+	void operatorRemove(@NotNull IEconomyProvider<?> economy, @NotNull Operator operator, @Nullable JsonObject data, CurrencyBundle... currencyBundle);
 
 	/**
 	 * Custom method to allow plugins to do their own actions.
@@ -171,7 +171,7 @@ public interface IAccount {
 	 * @param data    extra data about action
 	 */
 	@CreatesEntry
-	void custom(@NotNull IEconomyProvider economy, @NotNull Operator operator, @NotNull IAccount.CustomAction action, @Nullable JsonObject data, CurrencyBundle... currencyBundle);
+	void custom(@NotNull IEconomyProvider<?> economy, @NotNull Operator operator, @NotNull IAccount.CustomAction action, @Nullable JsonObject data, CurrencyBundle... currencyBundle);
 
 
 	/**
@@ -183,7 +183,7 @@ public interface IAccount {
 	 * @param data    extra data about action
 	 */
 	@CreatesEntry
-	void customReset(@NotNull IEconomyProvider economy, ICurrency currency, @NotNull Operator operator, @Nullable JsonObject data);
+	void customReset(@NotNull IEconomyProvider<?> economy, ICurrency currency, @NotNull Operator operator, @Nullable JsonObject data);
 	/**
 	 * Custom reset method to allow factions to do their own actions.
 	 *
@@ -192,7 +192,7 @@ public interface IAccount {
 	 * @param data    extra data about action
 	 */
 	@CreatesEntry
-	void customReset(@NotNull IEconomyProvider economy, @NotNull Operator operator, @Nullable JsonObject data);
+	void customReset(@NotNull IEconomyProvider<?> economy, @NotNull Operator operator, @Nullable JsonObject data);
 
 	/**
 	 * Custom reset method to allow factions to do their own actions.
@@ -202,7 +202,7 @@ public interface IAccount {
 	 * @param data    extra data about action
 	 */
 	@CreatesEntry
-	void customReset(@NotNull IEconomyProvider economy, ICurrency currency, @Nullable JsonObject data);
+	void customReset(@NotNull IEconomyProvider<?> economy, ICurrency currency, @Nullable JsonObject data);
 
 	/**
 	 * Custom reset method to allow factions to do their own actions.
@@ -211,7 +211,7 @@ public interface IAccount {
 	 * @param data    extra data about action
 	 */
 	@CreatesEntry
-	void customReset(@NotNull IEconomyProvider economy, @Nullable JsonObject data);
+	void customReset(@NotNull IEconomyProvider<?> economy, @Nullable JsonObject data);
 
 
 	enum CustomAction {

@@ -13,7 +13,7 @@ public interface IAccountRegistryManager {
 	 * @param manager manager
 	 * @param accountClazz account class
 	 */
-	void register(@NotNull IAccountManager manager, @NotNull Class<? extends IAccount> accountClazz) throws IllegalStateException;
+	void register(@NotNull IAccountManager<? extends IAccount> manager, @NotNull Class<? extends IAccount> accountClazz) throws IllegalStateException;
 
 
 	/**
@@ -22,7 +22,7 @@ public interface IAccountRegistryManager {
 	 * @return account manager, else null
 	 */
 	@Nullable
-	IAccountManager getManagerByAccount(@NotNull Class<?> accountClazz);
+	IAccountManager<? extends IAccount> getManagerByAccount(@NotNull Class<?> accountClazz);
 
 	/**
 	 * Gets account manager from account manager class
@@ -30,5 +30,5 @@ public interface IAccountRegistryManager {
 	 * @return account manager, else null
 	 */
 	@Nullable
-	IAccountManager getManager(@NotNull Class<? extends IAccountManager> manager);
+	IAccountManager<? extends IAccount> getManager(@NotNull Class<? extends IAccountManager<? extends IAccount>> manager);
 }

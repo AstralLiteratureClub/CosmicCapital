@@ -29,14 +29,14 @@ public interface IWorld {
 	 * @param account account
 	 * @param accountManager manager
 	 */
-	void register(Class<? extends IAccount> account, IAccountManager accountManager);
+	void register(Class<? extends IAccount> account, IAccountManager<? extends IAccount> accountManager);
 
 	/**
 	 * Returns account manager based on given account class
 	 * @param accountClass account manager to search for
 	 * @return manager for given currency
 	 */
-	IAccountManager accountManager(Class<? extends IAccount> accountClass);
+	IAccountManager<? extends IAccount> accountManager(Class<? extends IAccount> accountClass);
 
-	IAccountManager worldPlayerManager();
+	IAccountManager<? extends IAccount> worldPlayerManager();
 }

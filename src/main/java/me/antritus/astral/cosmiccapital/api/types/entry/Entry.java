@@ -26,7 +26,7 @@ public interface Entry {
 	 * @return class, else null
 	 */
 	@Nullable
-	Class<? extends IEconomyProvider> providerClass();
+	Class<? extends IEconomyProvider<?>> providerClass();
 
 	/**
 	 * Returns the type of this entry.

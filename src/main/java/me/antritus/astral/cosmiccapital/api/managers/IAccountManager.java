@@ -9,15 +9,15 @@ import java.util.UUID;
 /**
  * Represents default account manager
  */
-public interface IAccountManager {
+public interface IAccountManager<T extends IAccount> {
 	@Nullable
-	IAccount get(String name);
+	T get(String name);
 	@Nullable
-	IAccount get(UUID uniqueId);
+	T get(UUID uniqueId);
 	@NotNull
-	IAccount getKnownNonNull(String name);
+	T getKnownNonNull(String name);
 	@NotNull
-	IAccount getKnownNonNull(UUID uniqueId);
+	T getKnownNonNull(UUID uniqueId);
 
-	void createIfNotExists(IAccount account);
+	void createIfNotExists(T account);
 }

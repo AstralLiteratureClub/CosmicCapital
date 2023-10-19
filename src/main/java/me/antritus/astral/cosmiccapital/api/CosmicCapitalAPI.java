@@ -1,11 +1,12 @@
 package me.antritus.astral.cosmiccapital.api;
 
 import me.antritus.astral.cosmiccapital.api.managers.*;
+import me.antritus.astral.cosmiccapital.api.types.account.IAccount;
 import me.antritus.astral.cosmiccapital.api.types.currency.ICurrency;
 import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("unused")
-public interface CosmicCapitalAPI {
+public interface CosmicCapitalAPI<T> {
 	/**
 	 * Returns the operator manager.
 	 * @see IOperatorManager
@@ -19,7 +20,7 @@ public interface CosmicCapitalAPI {
 	 * @return account manager
 	 */
 	@NotNull
-	IAccountManager playerManager();
+	IAccountManager<? extends IAccount> playerManager();
 
 	/**
 	 * Returns the banknote manager
@@ -27,7 +28,7 @@ public interface CosmicCapitalAPI {
 	 * @return account manager
 	 */
 	@NotNull
-	IAccountManager banknoteManager();
+	IAccountManager<? extends IAccount> banknoteManager();
 
 	/**
 	 * Returns the manager for banks.
@@ -35,7 +36,7 @@ public interface CosmicCapitalAPI {
 	 * @return account manager
 	 */
 	@NotNull
-	IAccountManager bankManager();
+	IAccountManager<? extends IAccount> bankManager();
 
 	/**
 	 * Returns the currency manager

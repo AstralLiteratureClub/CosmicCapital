@@ -63,5 +63,5 @@ public interface IHistory {
 	 * @param jsonData json info
 	 * @param currencyData currencies & data
 	 */
-	void newHistoryEntry(IEconomyProvider economyProvider, EntryType entryType, IAccount to, Operator operator, JsonObject jsonData, EntryCurrencyData... currencyData);
+	void newHistoryEntry(IEconomyProvider<?> economyProvider, EntryType entryType, IAccount to, Operator operator, JsonObject jsonData, EntryCurrencyData... currencyData);
 }

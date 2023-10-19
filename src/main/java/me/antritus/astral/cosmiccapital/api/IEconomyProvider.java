@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("unused")
-public interface IEconomyProvider {
+public interface IEconomyProvider<T> {
 	/**
 	 * Provider name
 	 * @return name
@@ -26,7 +26,7 @@ public interface IEconomyProvider {
 	 * @return mod/plugin
 	 */
 	@Nullable
-	Object getPlugin();
+	T getPlugin();
 
 	/**
 	 * Converts name and version to json
