@@ -28,7 +28,7 @@ public class CosmicCapital extends Plugin implements CosmicCapitalAPI<Plugin>, I
 	}
 
 	@Override
-	public @NotNull IAccountManager<? extends IAccount> bankManager() {
+	public @NotNull IBankManager<? extends IAccount> bankManager() {
 		return null;
 	}
 
