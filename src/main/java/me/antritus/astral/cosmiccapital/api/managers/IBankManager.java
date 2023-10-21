@@ -43,13 +43,12 @@ public interface IBankManager<T extends IBank> extends IAccountManager<T> {
 	@Deprecated
 	void createIfNotExists(T account) throws IllegalStateException;
 
-
 	/**
 	 * Creates a new bank for a given owner
 	 * @param owner owner unique id
 	 * @return id
 	 */
-	T create(UUID owner);
+	T create(UUID owner, String name);
 
 
 
