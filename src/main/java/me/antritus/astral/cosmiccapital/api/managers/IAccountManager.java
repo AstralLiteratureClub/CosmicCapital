@@ -20,4 +20,20 @@ public interface IAccountManager<T extends IAccount> {
 	T getKnownNonNull(UUID uniqueId);
 
 	void createIfNotExists(T account);
+
+	/**
+	 * Deletes given account
+	 * @param account account
+	 */
+	 void delete(T account);
+	/**
+	 * Delete accounts with given uniqueId
+	 * @param uniqueId account id
+	 */
+	 void delete(UUID uniqueId);
+	/**
+	 * Delete accounts with given name
+	 * @param name account name
+	 */
+	 void delete(String name);
 }
