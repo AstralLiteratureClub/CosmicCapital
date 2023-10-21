@@ -27,4 +27,19 @@ public interface IBank extends IAccount {
 	 * @return members, including the owner
 	 */
 	List<UUID> members();
+
+
+	/**
+	 * Adds member to the bank. Does not add members multiple times
+	 * @param memberId member
+	 * @return true, if a member was added, false if already was in the list
+	 */
+	boolean addMember(UUID memberId);
+
+
+	/**
+	 * Removes member from the bank.
+	 * @param memberId member
+	 */
+	void removeMember(UUID memberId);
 }
