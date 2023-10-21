@@ -22,7 +22,7 @@ public interface IAccountRegistryManager {
 	 * @return account manager, else null
 	 */
 	@Nullable
-	IAccountManager<? extends IAccount> getManagerByAccount(@NotNull Class<?> accountClazz);
+	IAccountManager<? extends IAccount> getManagerByAccount(@NotNull Class<? extends IAccount> accountClazz);
 
 	/**
 	 * Gets account manager from account manager class
