@@ -6,5 +6,5 @@ package me.antritus.astral.cosmiccapital.api;
 //  Maybe having so many classes isn't needed.
 //  Just deleted all single currency account supports
 //  to make it easier to maintain and develop new features using the CosmicCapital plugin
-public interface SimpleEconomy {
+public class SimpleEconomy {
 }

@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.RunnableFuture;
 
 public interface IBankManager<T extends IBank> extends IAccountManager<T> {
 
@@ -17,7 +18,7 @@ public interface IBankManager<T extends IBank> extends IAccountManager<T> {
 	 */
 	@Nullable
 	@Override
-	T get(String name);
+	RunnableFuture<T> get(String name);
 	/**
 	 * Returns a copy of nullable. This will not initialize a new bank object.
 	 * @param uniqueId uniqueId
@@ -25,7 +26,7 @@ public interface IBankManager<T extends IBank> extends IAccountManager<T> {
 	 */
 	@Nullable
 	@Override
-	T get(UUID uniqueId);
+	RunnableFuture<T> get(UUID uniqueId);
 	@NotNull
 	@Override
 	T getKnownNonNull(String name);
@@ -57,12 +58,12 @@ public interface IBankManager<T extends IBank> extends IAccountManager<T> {
 	 * @param owner owner unique Id
 	 * @return banks
 	 */
-	List<? extends T> getAllOfOwner(UUID owner);
+	RunnableFuture<List<? extends T>> getAllOfOwner(UUID owner);
 
 	/**
 	 * Returns all banks where given member is part of. Members can own multiple banks
 	 * @param member member uniqueId
 	 * @return banks
 	 */
-	List<? extends T> getAllOfMember(UUID member);
+	RunnableFuture<List<? extends T>> getAllOfMember(UUID member);
 }

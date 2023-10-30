@@ -5,15 +5,16 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
+import java.util.concurrent.RunnableFuture;
 
 /**
  * Represents default account manager
  */
 public interface IAccountManager<T extends IAccount> {
 	@Nullable
-	T get(String name);
+	RunnableFuture<T> get(String name);
 	@Nullable
-	T get(UUID uniqueId);
+	RunnableFuture<T> get(UUID uniqueId);
 	@NotNull
 	T getKnownNonNull(String name);
 	@NotNull
