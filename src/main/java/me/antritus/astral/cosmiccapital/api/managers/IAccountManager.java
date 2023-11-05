@@ -5,20 +5,20 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
-import java.util.concurrent.RunnableFuture;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Represents default account manager
  */
 public interface IAccountManager<T extends IAccount> {
 	@Nullable
-	RunnableFuture<T> get(String name);
+	CompletableFuture<@Nullable T> get(String name);
 	@Nullable
-	RunnableFuture<T> get(UUID uniqueId);
+	CompletableFuture<@Nullable T> get(UUID uniqueId);
 	@NotNull
-	T getKnownNonNull(String name);
+	CompletableFuture<@NotNull T> getKnownNonNull(String name);
 	@NotNull
-	T getKnownNonNull(UUID uniqueId);
+	CompletableFuture<@NotNull T> getKnownNonNull(UUID uniqueId);
 
 	void createIfNotExists(T account);
 
