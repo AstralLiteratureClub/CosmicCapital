@@ -1,17 +1,15 @@
 package me.antritus.astral.cosmiccapital.api.types;
 
-import com.google.gson.JsonObject;
-import me.antritus.astral.cosmiccapital.api.IEconomyProvider;
-import me.antritus.astral.cosmiccapital.api.types.account.IAccount;
 import me.antritus.astral.cosmiccapital.api.types.entry.Entry;
-import me.antritus.astral.cosmiccapital.api.types.entry.EntryCurrencyData;
 import me.antritus.astral.cosmiccapital.api.types.entry.EntryType;
-import me.antritus.astral.cosmiccapital.api.types.operator.Operator;
+import org.intellij.lang.annotations.Pattern;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+/**
+ * Acts like a middle man between databases and developers. Calls database methods
+ */
 @SuppressWarnings("unused")
 public interface IHistory {
 	/**
@@ -22,46 +20,18 @@ public interface IHistory {
 	List<Entry> entries();
 
 	/**
+	 * Returns entry for given entry
+	 * @param key entry key
+	 * @return entry, else null
+	 */
+	@NotNull
+	List<@NotNull Entry> entryOf(@Pattern("[a-zA-Z0-9]*") String key);
+
+	/**
 	 * Returns all entries of given type
 	 * @param type entries
 	 * @return entries, else empty list
 	 */
 	@NotNull
-	List<Entry> entriesOf(EntryType type);
-
-	/**
-	 * Returns entries from given time to time.
-	 * @param from from (millis)
-	 * @param to to (millis)
-	 * @return entries, else empty list
-	 */
-	@NotNull
-	List<Entry> entriesFrom(long from, long to);
-
-	/**
-	 * Returns entries from given time to current time
-	 * @param from from (millis)
-	 * @return entries, else empty list
-	 */
-	@NotNull
-	List<Entry> entriesFromToCurrent(long from);
-
-	/**
-	 * Searches for entry with given id
-	 * @param id id
-	 * @return entry, else null
-	 */
-	@Nullable
-	Entry entry(int id);
-
-
-	/**
-	 * Creates new entry to history.
-	 * @param economyProvider economy provider
-	 * @param to account
-	 * @param operator operator
-	 * @param jsonData json info
-	 * @param currencyData currencies & data
-	 */
-	void newHistoryEntry(IEconomyProvider<?> economyProvider, EntryType entryType, IAccount to, Operator operator, JsonObject jsonData, EntryCurrencyData... currencyData);
+	List<@NotNull Entry> entriesOf(EntryType type);
 }

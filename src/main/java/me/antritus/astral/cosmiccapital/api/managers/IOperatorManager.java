@@ -5,7 +5,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
-import java.util.concurrent.RunnableFuture;
 
 @SuppressWarnings("unused")
 public interface IOperatorManager {
@@ -15,14 +14,14 @@ public interface IOperatorManager {
 	 * @return operator, else null
 	 */
 	@Nullable
-	RunnableFuture<Operator> getPlayerOperator(UUID uniqueId);
+	Operator getPlayerOperator(UUID uniqueId);
 	/**
 	 * Creates new instance of given name id, if player is found online
 	 * @param name name
 	 * @return operator, else null
 	 */
 	@Nullable
-	RunnableFuture<Operator> getPlayerOperator(String name);
+	Operator getPlayerOperator(String name);
 
 	/**
 	 * Returns the operator instance for console
@@ -37,7 +36,7 @@ public interface IOperatorManager {
 	 * @return player
 	 */
 	@Nullable
-	RunnableFuture<Object> getPlayer(Operator operator);
+	Object getPlayer(Operator operator);
 	/**
 	 * Returns the player instance of given operator.
 	 * @return player

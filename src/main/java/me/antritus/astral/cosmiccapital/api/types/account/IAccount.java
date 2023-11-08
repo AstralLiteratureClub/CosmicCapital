@@ -1,8 +1,6 @@
 package me.antritus.astral.cosmiccapital.api.types.account;
 
-import com.google.gson.JsonObject;
 import me.antritus.astral.cosmiccapital.api.IEconomyProvider;
-import me.antritus.astral.cosmiccapital.api.types.IHistory;
 import me.antritus.astral.cosmiccapital.api.types.currency.CurrencyBundle;
 import me.antritus.astral.cosmiccapital.api.types.currency.ICurrency;
 import me.antritus.astral.cosmiccapital.api.types.entry.CreatesEntry;
@@ -16,12 +14,6 @@ import java.util.UUID;
 
 @SuppressWarnings("unused")
 public interface IAccount {
-	/**
-	 * Returns the history of given account
-	 * @return history
-	 */
-	@NotNull
-	IHistory history();
 
 	/**
 	 * Returns the unique id for this account
@@ -42,13 +34,6 @@ public interface IAccount {
 	 * @return creation date (millis)
 	 */
 	long created();
-
-	/**
-	 * Resets the history of the account.
-	 * @param economy economy provider
-	 */
-	@CreatesEntry()
-	void resetHistory(@NotNull IEconomyProvider<?> economy);
 
 	/**
 	 * Gets the currency for this account.
@@ -81,19 +66,20 @@ public interface IAccount {
 	 * @param economy economy plugin
 	 * @param to      economy account
 	 * @param currencyBundle currencyBundle
-	 * @param data extra data about action
+	 * @param information extra information of this action
 	 */
 	@CreatesEntry
-	void transfer(@NotNull IEconomyProvider<?> economy, @NotNull IAccount to, @Nullable JsonObject data, CurrencyBundle... currencyBundle);
+	void transfer(@NotNull IEconomyProvider<?> economy, @NotNull IAccount to, @Nullable String information, CurrencyBundle... currencyBundle);
 
 	/**
 	 * Allows receiving transfers from other accounts.
 	 * @param economyProvider economy provider
 	 * @param from account receiving from
 	 * @param currencyBundle currencies and amounts received
+	 * @param information extra information of this action
 	 */
 	@ApiStatus.Internal
-	void receive(IEconomyProvider<?> economyProvider, IAccount from, JsonObject data, CurrencyBundle... currencyBundle);
+	void receive(@NotNull IEconomyProvider<?> economyProvider, @NotNull IAccount from, @Nullable String information, CurrencyBundle... currencyBundle);
 
 
 	/**
@@ -102,10 +88,10 @@ public interface IAccount {
 	 * @param economy economy provider
 	 * @param operator operator that executed given operation
 	 * @param currencyBundle currencyBundle
-	 * @param data extra data about action
+	 * @param information extra information of this action
 	 */
 	@CreatesEntry
-	void operatorSet(@NotNull IEconomyProvider<?> economy, @NotNull Operator operator, @Nullable JsonObject data, CurrencyBundle... currencyBundle);
+	void operatorSet(@NotNull IEconomyProvider<?> economy, @NotNull Operator operator, @Nullable String information, CurrencyBundle... currencyBundle);
 
 	/**
 	 * Resets balance of the given currency from the account.
@@ -113,20 +99,20 @@ public interface IAccount {
 	 * @param economy economy provider
 	 * @param currency currency
 	 * @param operator operator that executed given operation
-	 * @param data extra data about action
+	 * @param information extra information of this action
 	 */
 	@CreatesEntry
-	void operatorReset(@NotNull IEconomyProvider<?> economy, ICurrency currency, @NotNull Operator operator, @Nullable JsonObject data);
+	void operatorReset(@NotNull IEconomyProvider<?> economy, ICurrency currency, @NotNull Operator operator, @Nullable String information);
 
 	/**
 	 * Resets all balances and currencies from the account.
 	 *
 	 * @param economy economy provider
 	 * @param operator operator that executed given operation
-	 * @param data extra data about action
+	 * @param information extra information of this action
 	 */
 	@CreatesEntry
-	void operatorReset(@NotNull IEconomyProvider<?> economy, @NotNull Operator operator, @Nullable JsonObject data);
+	void operatorReset(@NotNull IEconomyProvider<?> economy, @NotNull Operator operator, @Nullable String information);
 
 	/**
 	 * Adds to the balance of the account.
@@ -134,10 +120,10 @@ public interface IAccount {
 	 * @param economy economy provider
 	 * @param operator operator that executed given operation
 	 * @param currencyBundles currencyBundle
-	 * @param data extra data about action
+	 * @param information extra information of this action
 	 */
 	@CreatesEntry
-	void operatorAdd(@NotNull IEconomyProvider<?> economy, @NotNull Operator operator, @Nullable JsonObject data, CurrencyBundle... currencyBundles);
+	void operatorAdd(@NotNull IEconomyProvider<?> economy, @NotNull Operator operator, @Nullable String information, CurrencyBundle... currencyBundles);
 
 	/**
 	 * Removes from the balance of the account.
@@ -145,10 +131,10 @@ public interface IAccount {
 	 * @param economy economy provider
 	 * @param operator operator that executed given operation
 	 * @param currencyBundle currencyBundle
-	 * @param data extra data about action
+	 * @param information extra information of this action
 	 */
 	@CreatesEntry
-	void operatorRemove(@NotNull IEconomyProvider<?> economy, @NotNull Operator operator, @Nullable JsonObject data, CurrencyBundle... currencyBundle);
+	void operatorRemove(@NotNull IEconomyProvider<?> economy, @NotNull Operator operator, @Nullable String information, CurrencyBundle... currencyBundle);
 
 	/**
 	 * Custom method to allow plugins to do their own actions.
@@ -157,10 +143,10 @@ public interface IAccount {
 	 * @param account account to receive/transfer to/from
 	 * @param action  action
 	 * @param currencyBundles currencyBundle
-	 * @param data    extra data about action
+	 * @param information extra information of this action
 	 */
 	@CreatesEntry
-	void custom(@NotNull IEconomyProvider<?> economy, @NotNull IAccount account, @NotNull IAccount.CustomAction action, @Nullable JsonObject data, CurrencyBundle... currencyBundles);
+	void custom(@NotNull IEconomyProvider<?> economy, @NotNull IAccount account, @NotNull IAccount.CustomAction action, @Nullable String information, CurrencyBundle... currencyBundles);
 
 	/**
 	 * Custom method to allow plugins to do their own actions.
@@ -169,10 +155,10 @@ public interface IAccount {
 	 * @param operator operator that executed given operation
 	 * @param action  action
 	 * @param currencyBundle currencyBundle
-	 * @param data    extra data about action
+	 * @param information extra information of this action
 	 */
 	@CreatesEntry
-	void custom(@NotNull IEconomyProvider<?> economy, @NotNull Operator operator, @NotNull IAccount.CustomAction action, @Nullable JsonObject data, CurrencyBundle... currencyBundle);
+	void custom(@NotNull IEconomyProvider<?> economy, @NotNull Operator operator, @NotNull IAccount.CustomAction action, @Nullable String information, CurrencyBundle... currencyBundle);
 
 	/**
 	 * Custom method to allow plugins to do their own actions.
@@ -180,10 +166,10 @@ public interface IAccount {
 	 * @param economy economy provider
 	 * @param action  action
 	 * @param currencyBundle currencyBundle
-	 * @param data    extra data about action
+	 * @param information extra information of this action
 	 */
 	@CreatesEntry
-	void custom(@NotNull IEconomyProvider<?> economy, @NotNull IAccount.CustomAction action, @Nullable JsonObject data, CurrencyBundle... currencyBundle);
+	void custom(@NotNull IEconomyProvider<?> economy, @NotNull IAccount.CustomAction action, @Nullable String information, CurrencyBundle... currencyBundle);
 
 	/**
 	 * Custom method to allow plugins to do their own actions.
@@ -193,10 +179,10 @@ public interface IAccount {
 	 * @param operator operator that executed given operation
 	 * @param action  action
 	 * @param currencyBundle currencyBundle
-	 * @param data    extra data about action
+	 * @param information extra information of this action
 	 */
 	@CreatesEntry
-	void custom(@NotNull IEconomyProvider<?> economy, @Nullable IAccount account, @Nullable Operator operator, @NotNull IAccount.CustomAction action, @Nullable JsonObject data, CurrencyBundle... currencyBundle);
+	void custom(@NotNull IEconomyProvider<?> economy, @Nullable IAccount account, @Nullable Operator operator, @NotNull IAccount.CustomAction action, @Nullable String information, CurrencyBundle... currencyBundle);
 
 
 	/**
@@ -205,39 +191,39 @@ public interface IAccount {
 	 * @param economy economy plugin
 	 * @param currency currency
 	 * @param operator operator
-	 * @param data    extra data about action
+	 * @param information extra information of this action
 	 */
 	@CreatesEntry
-	void customReset(@NotNull IEconomyProvider<?> economy, ICurrency currency, @NotNull Operator operator, @Nullable JsonObject data);
+	void customReset(@NotNull IEconomyProvider<?> economy, ICurrency currency, @NotNull Operator operator, @Nullable String information);
 
 	/**
 	 * Custom reset method to allow factions to do their own actions.
 	 *
 	 * @param economy economy plugin
 	 * @param operator operator
-	 * @param data    extra data about action
+	 * @param information extra information of this action
 	 */
 	@CreatesEntry
-	void customReset(@NotNull IEconomyProvider<?> economy, @NotNull Operator operator, @Nullable JsonObject data);
+	void customReset(@NotNull IEconomyProvider<?> economy, @NotNull Operator operator, @Nullable String information);
 
 	/**
 	 * Custom reset method to allow factions to do their own actions.
 	 *
 	 * @param economy economy plugin
 	 * @param currency currency
-	 * @param data    extra data about action
+	 * @param information extra information of this action
 	 */
 	@CreatesEntry
-	void customReset(@NotNull IEconomyProvider<?> economy, ICurrency currency, @Nullable JsonObject data);
+	void customReset(@NotNull IEconomyProvider<?> economy, ICurrency currency, @Nullable String information);
 
 	/**
 	 * Custom reset method to allow factions to do their own actions.
 	 *
 	 * @param economy economy plugin
-	 * @param data    extra data about action
+	 * @param information extra information of this action
 	 */
 	@CreatesEntry
-	void customReset(@NotNull IEconomyProvider<?> economy, @Nullable JsonObject data);
+	void customReset(@NotNull IEconomyProvider<?> economy, @Nullable String information);
 
 
 	enum CustomAction {

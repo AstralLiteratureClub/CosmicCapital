@@ -10,9 +10,7 @@ import org.jetbrains.annotations.NotNull;
 @SuppressWarnings("unused")
 public class EntryCurrencyData {
 	@Expose(deserialize = false, serialize = false)
-	private ICurrency currency;
-	@Expose
-	private String currencyName;
+	private String currency;
 	@Expose
 	private final double balanceBefore;
 	@Expose
@@ -21,36 +19,33 @@ public class EntryCurrencyData {
 	private final double balanceChange;
 
 	protected EntryCurrencyData(@NotNull ICurrency currency, double balanceBefore, double balanceAfter, double balanceChange) {
-		this.currency = currency;
-		this.currencyName = currency.name();
+		this.currency = currency.name();
 		this.balanceBefore = balanceBefore;
 		this.balanceAfter = balanceAfter;
 		this.balanceChange = balanceChange;
 	}
 
 	protected EntryCurrencyData(@NotNull String currency, double balanceBefore, double balanceAfter, double balanceChange) {
-		this.currencyName = currency;
+		this.currency = currency;
 		this.balanceBefore = balanceBefore;
 		this.balanceAfter = balanceAfter;
 		this.balanceChange = balanceChange;
 	}
 	public EntryCurrencyData(@NotNull ICurrency currency, double balanceBefore, double balanceAfter){
-		this.currency = currency;
-		this.currencyName = currency.name();
+		this.currency = currency.name();
 		this.balanceBefore = balanceBefore;
 		this.balanceAfter = balanceAfter;
 		this.balanceChange = balanceBefore-balanceAfter;
 	}
 
 	public EntryCurrencyData(@NotNull String currency, double balanceBefore, double balanceAfter){
-		this.currencyName = currency;
+		this.currency = currency;
 		this.balanceBefore = balanceBefore;
 		this.balanceAfter = balanceAfter;
 		this.balanceChange = balanceBefore-balanceAfter;
 	}
 	private EntryCurrencyData(){
 		this.currency = null;
-		this.currencyName = null;
 		this.balanceBefore = 0;
 		this.balanceAfter = 0;
 		this.balanceChange = 0;
@@ -60,31 +55,24 @@ public class EntryCurrencyData {
 	 * Currency for this bundle
 	 * @return currency
 	 */
-	public ICurrency currency() {
-		if (currencyName != null && currency == null){
-			CosmicCapitalAPI api = CosmicCapitalProvider.getAPI();
+	public ICurrency currencyInstance() {
+		if (currency != null){
+			CosmicCapitalAPI<?> api = CosmicCapitalProvider.getAPI();
 			if (api == null){
 				throw new IllegalStateException(CosmicCapitalProvider.class.getName() +"#getAPI() is null! Please wait until using this method!");
 			}
 			ICurrencyManager currencyManager = api.currencyManager();
-			ICurrency currency = currencyManager.getCurrency(currencyName);
-			if (currency == null){
-				return null;
-			}
-			this.currency = currency;
+			return currencyManager.getCurrency(this.currency);
 		}
-		return currency;
+		return null;
 	}
 
 	/**
 	 * Returns name of the currency in this bundle
 	 * @return currency's name
 	 */
-	public String currencyName() {
-		if (currencyName == null && currency != null){
-			currencyName = currency.name();
-		}
-		return currencyName;
+	public String currency() {
+		return currency;
 	}
 
 	public double balanceBefore() {

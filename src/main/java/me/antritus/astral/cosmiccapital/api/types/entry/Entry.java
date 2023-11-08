@@ -1,11 +1,9 @@
 package me.antritus.astral.cosmiccapital.api.types.entry;
 
-import com.google.gson.JsonObject;
-import me.antritus.astral.cosmiccapital.api.IEconomyProvider;
-import me.antritus.astral.cosmiccapital.api.types.account.IAccount;
-import me.antritus.astral.cosmiccapital.api.types.operator.Operator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.UUID;
 
 /**
  * @author Antritus
@@ -22,11 +20,11 @@ public interface Entry {
 	String providerName();
 
 	/**
-	 * Returns the class of the provider. Null if class is not found.
-	 * @return class, else null
+	 * Extra information left behind this entry. For example, Comment from operator when setting balance
+	 * @return information, else null
 	 */
 	@Nullable
-	Class<? extends IEconomyProvider<?>> providerClass();
+	String extraInformation();
 
 	/**
 	 * Returns the type of this entry.
@@ -36,29 +34,23 @@ public interface Entry {
 	EntryType type();
 
 	/**
-	 * Returns the account this entry belongs to
-	 * @return account
-	 */
-	@Nullable
-	IAccount account();
-
-	/**
-	 * Returns another account if another account is used in this entry too.
-	 * @return account, else null
-	 */
-	IAccount secondaryAccount();
-
-	/**
-	 * Returns the operator this entry might have, else null
-	 * @return operator
-	 */
-	Operator operator();
-
-	/**
-	 * Returns the id for this entry.
+	 * Returns the uniqueId for the owner account of this entry
 	 * @return id
 	 */
-	int id();
+	@NotNull
+	UUID accountId();
+
+	/**
+	 * Returns the unique id for secondary account
+ 	 * @return unique id
+	 */
+	UUID secondaryAccountId();
+
+	/**
+	 * Returns the operator
+	 * @return operator
+	 */
+	String operator();
 
 	/**
 	 * Returns the date this entry was first created.
@@ -66,24 +58,10 @@ public interface Entry {
 	 */
 	long created();
 
-	/**
-	 * Returns extra info about this entry.
-	 * @return info
-	 */
-	@Nullable
-	JsonObject info();
-
 
 	/**
 	 * Returns the currencies and changes of this entry.
 	 * @return data
 	 */
 	EntryCurrencyData[] entryCurrencyData();
-
-
-	/**
-	 * Is multi-currency entry.
-	 * @return is multi-currency entry
-	 */
-	boolean multiCurrency();
 }
