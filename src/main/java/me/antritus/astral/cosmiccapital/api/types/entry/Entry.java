@@ -1,5 +1,7 @@
 package me.antritus.astral.cosmiccapital.api.types.entry;
 
+import me.antritus.astral.cosmiccapital.api.managers.IEntryManager;
+import org.intellij.lang.annotations.Pattern;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -51,6 +53,14 @@ public interface Entry {
 	 * @return operator
 	 */
 	String operator();
+
+	/**
+	 * Returns the key for given entry.
+	 * @return Key
+	 */
+	@NotNull
+	@Pattern(IEntryManager.keyPattern)
+	String key();
 
 	/**
 	 * Returns the date this entry was first created.

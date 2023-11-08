@@ -6,6 +6,7 @@ import org.intellij.lang.annotations.Pattern;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Acts like a middle man between databases and developers. Calls database methods
@@ -17,7 +18,7 @@ public interface IHistory {
 	 * @return entries
 	 */
 	@NotNull
-	List<Entry> entries();
+	CompletableFuture<@NotNull List<@NotNull Entry>> entries();
 
 	/**
 	 * Returns entry for given entry
@@ -25,7 +26,7 @@ public interface IHistory {
 	 * @return entry, else null
 	 */
 	@NotNull
-	List<@NotNull Entry> entryOf(@Pattern("[a-zA-Z0-9]*") String key);
+	CompletableFuture<@NotNull Entry> entryOf(@Pattern("[a-zA-Z0-9]*") String key);
 
 	/**
 	 * Returns all entries of given type
@@ -33,5 +34,5 @@ public interface IHistory {
 	 * @return entries, else empty list
 	 */
 	@NotNull
-	List<@NotNull Entry> entriesOf(EntryType type);
+	CompletableFuture<@NotNull List<@NotNull Entry>> entriesOf(EntryType type);
 }
