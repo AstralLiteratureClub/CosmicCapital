@@ -1,7 +1,7 @@
 package me.antritus.astral.cosmiccapital.api.types.currency;
 
 @SuppressWarnings("unused")
-public interface IObjectCurrency<T> extends ICurrency {
+public interface IObjectCurrency<T, C> extends ICurrency<C> {
 	/**
 	 * Returns the object for this currency.
 	 *

@@ -8,13 +8,13 @@ import org.jetbrains.annotations.Nullable;
  * Allows registering and getting currencies by name
  */
 @SuppressWarnings("unused")
-public interface ICurrencyManager {
+public interface ICurrencyManager<C extends ICurrency<?>> {
 	/**
 	 * Returns the main currency of the server.
 	 * @return currency
 	 */
 	@NotNull
-	ICurrency getMainCurrency();
+	C getMainCurrency();
 
 	/**
 	 * Returns currency for name.
@@ -22,18 +22,18 @@ public interface ICurrencyManager {
 	 * @return currency, else null
 	 */
 	@Nullable
-	ICurrency getCurrency(String name);
+	ICurrency<?> getCurrency(String name);
 
 	/**
 	 * Creates a new currency if one does not exist.
 	 * @param currency currency
 	 * @return true if created, false if existed already
 	 */
-	boolean createCurrency(ICurrency currency);
+	boolean createCurrency(ICurrency<?> currency);
 
 	/**
 	 * Is the currency found in the registry?
 	 * @return true if registered, else false
 	 */
-	boolean isRegistered(ICurrency currency);
+	boolean isRegistered(ICurrency<?> currency);
 }

@@ -8,9 +8,10 @@ import me.antritus.astral.cosmiccapital.api.providers.CosmicCapitalProvider;
 /**
  * Creates bundle/double for currencies. This helps in lists with multiple currencies and amounts of "cash" or "money"
  */
+@SuppressWarnings("unused")
 public class CurrencyBundle {
 	@Expose(deserialize = false, serialize = false)
-	private ICurrency currency;
+	private ICurrency<?> currency;
 	private String currencyName;
 	@Expose
 	private final double amount;
@@ -20,7 +21,7 @@ public class CurrencyBundle {
 	 * @param currency currency
 	 * @param amount amount
 	 */
-	public CurrencyBundle(ICurrency currency, double amount) {
+	public CurrencyBundle(ICurrency<?> currency, double amount) {
 		this.currency = currency;
 		this.amount = amount;
 		this.currencyName = currency.name();
@@ -47,14 +48,14 @@ public class CurrencyBundle {
 	 * Currency for this bundle
 	 * @return currency
 	 */
-	public ICurrency currency() {
+	public ICurrency<?> currency() {
 		if (currencyName != null && currency == null){
-			CosmicCapitalAPI api = CosmicCapitalProvider.getAPI();
+			CosmicCapitalAPI<?> api = CosmicCapitalProvider.getAPI();
 			if (api == null){
 				throw new IllegalStateException(CosmicCapitalProvider.class.getName() +"#getAPI() is null! Please wait until using this method!");
 			}
-			ICurrencyManager currencyManager = api.currencyManager();
-			ICurrency currency = currencyManager.getCurrency(currencyName);
+			ICurrencyManager<?> currencyManager = api.currencyManager();
+			ICurrency<?> currency = currencyManager.getCurrency(currencyName);
 			if (currency == null){
 				return null;
 			}

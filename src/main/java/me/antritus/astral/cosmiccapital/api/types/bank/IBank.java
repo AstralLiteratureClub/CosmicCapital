@@ -9,6 +9,7 @@ import java.util.UUID;
 /**
  * Represents a bank account.
  */
+@SuppressWarnings("unused")
 public interface IBank extends IAccount {
 	/**
 	 * Bank account id

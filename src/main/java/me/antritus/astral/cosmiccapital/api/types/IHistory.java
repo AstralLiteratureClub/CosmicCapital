@@ -18,7 +18,14 @@ public interface IHistory {
 	 * @return entries
 	 */
 	@NotNull
-	CompletableFuture<@NotNull List<@NotNull Entry>> entries();
+	CompletableFuture<@NotNull List<@NotNull String>> entries();
+	/**
+	 * Returns all entries of given type
+	 * @param type entries
+	 * @return entries, else empty list
+	 */
+	@NotNull
+	CompletableFuture<@NotNull List<@NotNull String>> entriesOf(EntryType type);
 
 	/**
 	 * Returns entry for given entry
@@ -27,12 +34,4 @@ public interface IHistory {
 	 */
 	@NotNull
 	CompletableFuture<@NotNull Entry> entryOf(@Pattern("[a-zA-Z0-9]*") String key);
-
-	/**
-	 * Returns all entries of given type
-	 * @param type entries
-	 * @return entries, else empty list
-	 */
-	@NotNull
-	CompletableFuture<@NotNull List<@NotNull Entry>> entriesOf(EntryType type);
 }

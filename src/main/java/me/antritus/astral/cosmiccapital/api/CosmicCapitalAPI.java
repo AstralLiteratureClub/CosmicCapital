@@ -46,7 +46,14 @@ public interface CosmicCapitalAPI<T> {
 	 * @return currency manager
 	 */
 	@NotNull
-	ICurrencyManager currencyManager();
+	ICurrencyManager<?> currencyManager();
+
+	/**
+	 * Returns the history manager for accounts.
+	 * @return history manager
+	 */
+	@NotNull
+	IEntryManager entryManager();
 
 
 	/**
@@ -56,7 +63,7 @@ public interface CosmicCapitalAPI<T> {
 	 * @return this currency can be changed in the plugin configurations.
 	 */
 	@NotNull
-	default ICurrency mainCurrency() {
+	default ICurrency<?> mainCurrency() {
 		return currencyManager().getMainCurrency();
 	}
 

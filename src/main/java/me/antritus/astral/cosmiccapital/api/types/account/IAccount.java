@@ -40,14 +40,14 @@ public interface IAccount {
 	 * @return currency, else null
 	 */
 	@Nullable
-	ICurrency[] currency();
+	ICurrency<?>[] currency();
 
 	/**
 	 * Returns the balance of the account.
 	 * @param currency currency
 	 * @return balance
 	 */
-	double balance(ICurrency currency);
+	double balance(ICurrency<?> currency);
 
 	/**
 	 * Returns the balance of given currency in the account.
@@ -102,7 +102,7 @@ public interface IAccount {
 	 * @param information extra information of this action
 	 */
 	@CreatesEntry
-	void operatorReset(@NotNull IEconomyProvider<?> economy, ICurrency currency, @NotNull Operator operator, @Nullable String information);
+	void operatorReset(@NotNull IEconomyProvider<?> economy, ICurrency<?> currency, @NotNull Operator operator, @Nullable String information);
 
 	/**
 	 * Resets all balances and currencies from the account.
@@ -194,7 +194,7 @@ public interface IAccount {
 	 * @param information extra information of this action
 	 */
 	@CreatesEntry
-	void customReset(@NotNull IEconomyProvider<?> economy, ICurrency currency, @NotNull Operator operator, @Nullable String information);
+	void customReset(@NotNull IEconomyProvider<?> economy, ICurrency<?> currency, @NotNull Operator operator, @Nullable String information);
 
 	/**
 	 * Custom reset method to allow factions to do their own actions.
@@ -214,7 +214,7 @@ public interface IAccount {
 	 * @param information extra information of this action
 	 */
 	@CreatesEntry
-	void customReset(@NotNull IEconomyProvider<?> economy, ICurrency currency, @Nullable String information);
+	void customReset(@NotNull IEconomyProvider<?> economy, ICurrency<?> currency, @Nullable String information);
 
 	/**
 	 * Custom reset method to allow factions to do their own actions.

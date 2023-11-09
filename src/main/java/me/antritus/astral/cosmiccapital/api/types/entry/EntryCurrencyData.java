@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 @SuppressWarnings("unused")
 public class EntryCurrencyData {
 	@Expose(deserialize = false, serialize = false)
-	private String currency;
+	private final String currency;
 	@Expose
 	private final double balanceBefore;
 	@Expose
@@ -18,7 +18,7 @@ public class EntryCurrencyData {
 	@Expose
 	private final double balanceChange;
 
-	protected EntryCurrencyData(@NotNull ICurrency currency, double balanceBefore, double balanceAfter, double balanceChange) {
+	protected EntryCurrencyData(@NotNull ICurrency<?> currency, double balanceBefore, double balanceAfter, double balanceChange) {
 		this.currency = currency.name();
 		this.balanceBefore = balanceBefore;
 		this.balanceAfter = balanceAfter;
@@ -31,7 +31,7 @@ public class EntryCurrencyData {
 		this.balanceAfter = balanceAfter;
 		this.balanceChange = balanceChange;
 	}
-	public EntryCurrencyData(@NotNull ICurrency currency, double balanceBefore, double balanceAfter){
+	public EntryCurrencyData(@NotNull ICurrency<?> currency, double balanceBefore, double balanceAfter){
 		this.currency = currency.name();
 		this.balanceBefore = balanceBefore;
 		this.balanceAfter = balanceAfter;
@@ -55,13 +55,13 @@ public class EntryCurrencyData {
 	 * Currency for this bundle
 	 * @return currency
 	 */
-	public ICurrency currencyInstance() {
+	public ICurrency<?> currencyInstance() {
 		if (currency != null){
 			CosmicCapitalAPI<?> api = CosmicCapitalProvider.getAPI();
 			if (api == null){
 				throw new IllegalStateException(CosmicCapitalProvider.class.getName() +"#getAPI() is null! Please wait until using this method!");
 			}
-			ICurrencyManager currencyManager = api.currencyManager();
+			ICurrencyManager<?> currencyManager = api.currencyManager();
 			return currencyManager.getCurrency(this.currency);
 		}
 		return null;
