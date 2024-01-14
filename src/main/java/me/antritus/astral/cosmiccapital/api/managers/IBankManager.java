@@ -16,7 +16,7 @@ public interface IBankManager<T extends IBank> extends IAccountManager<T> {
 	 * @param name name
 	 * @return bank
 	 */
-	@Nullable
+	@NotNull
 	@Override
 	CompletableFuture<@Nullable T> get(String name);
 	/**
@@ -24,7 +24,7 @@ public interface IBankManager<T extends IBank> extends IAccountManager<T> {
 	 * @param uniqueId uniqueId
 	 * @return bank
 	 */
-	@Nullable
+	@NotNull
 	@Override
 	CompletableFuture<@Nullable T> get(UUID uniqueId);
 	@NotNull

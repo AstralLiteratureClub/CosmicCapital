@@ -4,10 +4,10 @@ plugins {
 }
 
 group = 'me.antritus'
-version = '1.2.4'
+version = '1.2.5'
 description = 'CosmicCapitalAPI'
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = JavaVersion.VERSION_11
+java.sourceCompatibility = JavaVersion.VERSION_17
+java.targetCompatibility = JavaVersion.VERSION_17
 
 repositories {
     mavenCentral {

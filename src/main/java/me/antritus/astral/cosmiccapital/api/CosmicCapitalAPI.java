@@ -13,6 +13,7 @@ public interface CosmicCapitalAPI<T> {
 	 * @see IOperatorManager
 	 * @return operator manager
 	 */
+	@NotNull
 	IOperatorManager operatorManager();
 
 	/**
@@ -31,6 +32,11 @@ public interface CosmicCapitalAPI<T> {
 	@NotNull
 	IAccountManager<? extends IAccount> banknoteManager();
 
+	@NotNull
+	IEntryManager playerEntryManager();
+	@NotNull
+	IEntryManager bankEntryManager();
+
 	/**
 	 * Returns the <b>global</b> manager bank manager.
 	 * @see me.antritus.astral.cosmiccapital.api.types.bank.IBank
@@ -47,13 +53,6 @@ public interface CosmicCapitalAPI<T> {
 	 */
 	@NotNull
 	ICurrencyManager<?> currencyManager();
-
-	/**
-	 * Returns the history manager for accounts.
-	 * @return history manager
-	 */
-	@NotNull
-	IEntryManager entryManager();
 
 
 	/**
@@ -72,6 +71,7 @@ public interface CosmicCapitalAPI<T> {
 	 * Returns global the world manager
 	 * @return world manager
 	 */
+	@NotNull
 	IWorldManager worldManager();
 
 
@@ -79,5 +79,6 @@ public interface CosmicCapitalAPI<T> {
 	 * Returns the account registry manager
 	 * @return account registry manager
 	 */
+	@NotNull
 	IAccountRegistryManager accountRegistryManager();
 }

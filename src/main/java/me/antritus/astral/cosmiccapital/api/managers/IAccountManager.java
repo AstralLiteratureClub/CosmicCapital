@@ -11,9 +11,11 @@ import java.util.concurrent.CompletableFuture;
  * Represents default account manager
  */
 public interface IAccountManager<T extends IAccount> {
-	@Nullable
+	@NotNull
+
 	CompletableFuture<@Nullable T> get(String name);
-	@Nullable
+	@NotNull
+
 	CompletableFuture<@Nullable T> get(UUID uniqueId);
 	@NotNull
 	CompletableFuture<@NotNull T> getKnownNonNull(String name);

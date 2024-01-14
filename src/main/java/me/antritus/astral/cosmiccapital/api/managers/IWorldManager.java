@@ -1,6 +1,7 @@
 package me.antritus.astral.cosmiccapital.api.managers;
 
 import me.antritus.astral.cosmiccapital.api.types.IWorld;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 
@@ -11,6 +12,7 @@ public interface IWorldManager {
 	 * @param worldName world name
 	 * @return world
 	 */
+	@NotNull
 	IWorld world(String worldName);
 
 	/**
@@ -18,11 +20,13 @@ public interface IWorldManager {
 	 * @param world platform world
 	 * @return world
 	 */
+	@NotNull
 	IWorld world(Object world);
 
 	/**
 	 * Returns all the world objects
 	 * @return worlds
 	 */
+	@NotNull
 	Collection<IWorld> worlds();
 }

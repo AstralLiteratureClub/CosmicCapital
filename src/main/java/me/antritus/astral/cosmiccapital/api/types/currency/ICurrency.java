@@ -3,7 +3,7 @@ package me.antritus.astral.cosmiccapital.api.types.currency;
 import me.antritus.astral.cosmiccapital.api.IEconomyProvider;
 
 @SuppressWarnings("unused")
-public interface ICurrency<T> {
+public interface ICurrency<T extends IEconomyProvider<?>> {
 	/**
 	 * Name of the currency
 	 * @return name
@@ -52,9 +52,9 @@ public interface ICurrency<T> {
 	 * Returns the provider for this currency.
 	 * @return provider for the currency
 	 */
-	Class<? extends IEconomyProvider<T>> getEconomyProvider();
+	Class<? extends T> getEconomyProvider();
 
-	IEconomyProvider<T> getProvider();
+	T getProvider();
 
 	/**
 	 * Returns the char display types.

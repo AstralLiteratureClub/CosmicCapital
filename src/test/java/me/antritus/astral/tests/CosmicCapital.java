@@ -13,7 +13,7 @@ public class CosmicCapital extends Plugin implements CosmicCapitalAPI<Plugin>, I
 	}
 
 	@Override
-	public IOperatorManager operatorManager() {
+	public @NotNull IOperatorManager operatorManager() {
 		return null;
 	}
 
@@ -28,6 +28,16 @@ public class CosmicCapital extends Plugin implements CosmicCapitalAPI<Plugin>, I
 	}
 
 	@Override
+	public @NotNull IEntryManager playerEntryManager() {
+		return null;
+	}
+
+	@Override
+	public @NotNull IEntryManager bankEntryManager() {
+		return null;
+	}
+
+	@Override
 	public @NotNull IBankManager<? extends IAccount> bankManager() {
 		return null;
 	}
@@ -38,12 +48,12 @@ public class CosmicCapital extends Plugin implements CosmicCapitalAPI<Plugin>, I
 	}
 
 	@Override
-	public IWorldManager worldManager() {
+	public @NotNull IWorldManager worldManager() {
 		return null;
 	}
 
 	@Override
-	public IAccountRegistryManager accountRegistryManager() {
+	public @NotNull IAccountRegistryManager accountRegistryManager() {
 		return null;
 	}
 
